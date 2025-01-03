@@ -41,6 +41,7 @@ const Comment = sequelize.define('Comment', {
         },
     },
 }, {
+    schema: 'Comment',
     timestamps: true,
 });
 

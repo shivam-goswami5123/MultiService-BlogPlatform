@@ -19,6 +19,7 @@ const User = sequelize.define('User', {
         allowNull: false,
     },
 }, {
+    schema: 'User',
     timestamps: true,
 });
 

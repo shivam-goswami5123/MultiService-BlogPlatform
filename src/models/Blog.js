@@ -28,6 +28,7 @@ const Blog = sequelize.define('Blog', {
     },
   },
 }, {
+  schema:'Blog',
   timestamps: true,
 });
 
