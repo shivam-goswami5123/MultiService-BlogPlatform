@@ -7,18 +7,28 @@ const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
     dialect: 'postgres',
 });
 
+
+
 const connectDB = async () => {
     try {
         await sequelize.authenticate();
         console.log('Connected to PostgreSQL');
 
         // Synchronize all models with the database
-        await sequelize.sync({ force: false }); // Use { force: true } to drop and recreate the table
-        console.log('Database synchronized');
+        sequelize.sync().then(() => {
+            console.log("Database synced successfully!");
+          }).catch((error) => {
+            console.error("Error syncing database:", error);
+          });
     } catch (error) {
         console.error('Unable to connect to PostgreSQL:', error.message);
         process.exit(1);
     }
 };
+
+
+
+
+
 
 module.exports = { sequelize, connectDB };

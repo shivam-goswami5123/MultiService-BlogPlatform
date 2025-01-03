@@ -1,11 +1,13 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../db/db'); // Ensure your sequelize instance is correctly imported
 
+
+
 const User = sequelize.define('User', {
     id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID, // Use UUID for consistency
+        defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
-        autoIncrement: true,
     },
     username: {
         type: DataTypes.STRING,
@@ -19,5 +21,7 @@ const User = sequelize.define('User', {
 }, {
     timestamps: true,
 });
+
+
 
 module.exports = User;
