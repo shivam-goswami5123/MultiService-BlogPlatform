@@ -11,6 +11,7 @@ services:
       POSTGRES_DB: ${DB_NAME}
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql  # Mount the SQL script here
     networks:
       - app-network
     ports:
@@ -18,15 +19,17 @@ services:
 
   user-service:
     build:
-      context: ./user-service
+      context: .
+      dockerfile: ./user-service/Dockerfile
     container_name: user-service
     environment:
       NODE_ENV: production
-      DB_HOST: postgres-db
+      DB_HOST: ${DB_HOST}
       DB_PORT: 5432
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
+      JWT_SECRET: ${JWT_SECRET}
     ports:
       - "3001:3001"
     networks:
@@ -36,15 +39,17 @@ services:
 
   blog-service:
     build:
-      context: ./blog-service
+      context: .
+      dockerfile: ./blog-service/Dockerfile
     container_name: blog-service
     environment:
       NODE_ENV: production
-      DB_HOST: postgres-db
+      DB_HOST: ${DB_HOST}
       DB_PORT: 5432
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
+      JWT_SECRET: ${JWT_SECRET}
     ports:
       - "3002:3002"
     networks:
@@ -54,15 +59,17 @@ services:
 
   comment-service:
     build:
-      context: ./comment-service
+      context: .
+      dockerfile: ./comment-service/Dockerfile
     container_name: comment-service
     environment:
       NODE_ENV: production
-      DB_HOST: postgres-db
+      DB_HOST: ${DB_HOST}
       DB_PORT: 5432
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
+      JWT_SECRET: ${JWT_SECRET}
     ports:
       - "3003:3003"
     networks:
