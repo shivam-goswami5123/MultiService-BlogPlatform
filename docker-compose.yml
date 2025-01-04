@@ -1,0 +1,78 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:14-alpine
+    container_name: postgres-db
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+    ports:
+      - "5432:5432"
+
+  user-service:
+    build:
+      context: ./user-service
+    container_name: user-service
+    environment:
+      NODE_ENV: production
+      DB_HOST: postgres-db
+      DB_PORT: 5432
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+    ports:
+      - "3001:3001"
+    networks:
+      - app-network
+    depends_on:
+      - postgres
+
+  blog-service:
+    build:
+      context: ./blog-service
+    container_name: blog-service
+    environment:
+      NODE_ENV: production
+      DB_HOST: postgres-db
+      DB_PORT: 5432
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+    ports:
+      - "3002:3002"
+    networks:
+      - app-network
+    depends_on:
+      - postgres
+
+  comment-service:
+    build:
+      context: ./comment-service
+    container_name: comment-service
+    environment:
+      NODE_ENV: production
+      DB_HOST: postgres-db
+      DB_PORT: 5432
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+    ports:
+      - "3003:3003"
+    networks:
+      - app-network
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
+
+networks:
+  app-network:
+    driver: bridge

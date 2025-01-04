@@ -1,4 +1,4 @@
-const Comment = require('../models/Comment');
+const Comment = require('../../shared/models/Comment');
 
 
 // Helper function to nest comments

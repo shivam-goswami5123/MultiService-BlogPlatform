@@ -1,6 +1,7 @@
-const User = require('../models/User');
-const Blog = require('../models/Blog');
-const Comment = require('../models/Comment');
+// Require models to ensure they're loaded
+const  User  = require('./models/User');
+const  Blog  = require('./models/Blog');
+const  Comment  = require('./models/Comment');
 
 // User and Blog Association
 User.hasMany(Blog, { foreignKey: 'authorId', as: 'blogs' });

@@ -6,7 +6,7 @@ const {
   updateBlog,
   deleteBlog,
 } = require('../controllers/blogController');
-const {authenticate} = require('../middleware/authMiddleware');
+const {authenticate} = require('../../shared/middleware/authMiddleware');
 
 const router = express.Router();
 
