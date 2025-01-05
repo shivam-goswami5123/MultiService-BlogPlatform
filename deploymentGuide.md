@@ -13,7 +13,12 @@ Allow the following ports in your security group:
 
 ## SSH into Your Instance:
 ```bash
-ssh -i "your-key.pem" ubuntu@your-ec2-public-ip
+#Open an SSH client.
+#Locate your private key file. The key used to launch this instance
+#Run this command, if necessary, to ensure your key is not publicly viewable.
+chmod 400 "your-key.pem"
+ssh -i "your-key.pem" ubuntu@ec2-your-public-ip.ap-south-1.compute.amazonaws.com
+#Replace key-value pair generated while creating EC2 instance and replace with the public IP of the instance
 ```
 
 # Step 2: Install Docker and Docker Compose
