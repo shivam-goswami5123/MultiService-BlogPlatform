@@ -55,8 +55,10 @@ JWT_SECRET=your_jwt_secret
 ```bash
 #Build the Docker images for the services:
 docker-compose build
-#Start all containers using:
-docker-compose up
+#NOTE: If the env file is not been passed automatically to the containers while building then specify explicitly the env file in the build command
+docker-compose --env-file .env build
+#Start all containers in detached mode using:
+docker-compose up -d
 #This command will:
 #Spin up the database and application services.
 #Attach logs to the terminal.
@@ -70,9 +72,9 @@ docker-compose logs
 docker-compose down
 #After making changes to the configuration or code:
 #Rebuild the containers:
-docker-compose build
+docker-compose --env-file .env build
 #Restart the services:
-docker-compose up
+docker-compose up -d
 ```
 
 ---
