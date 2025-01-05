@@ -1,8 +1,5 @@
 # **Multi-Service Blog Platform**
 
-## **Technologies Used**
-
-## **File Structure**
 
 ## **Project Assignment**
 
@@ -21,5 +18,5 @@ This project includes additional README files to help you with deployment and ru
 
 ## **API Documentation**
 
-To understand how to use the endpoints and test them using Postman, please refer to the [API Documentation](https://docs.your-api-docs-link).
+To understand how to use the endpoints and test them using Postman, please refer to the [API Documentation](https://documenter.getpostman.com/view/31853383/2sAYJ9AdsB).
 
