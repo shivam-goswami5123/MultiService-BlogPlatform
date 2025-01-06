@@ -77,7 +77,7 @@ const deleteBlog = async (req, res) => {
     }
 
     await blog.destroy();
-    res.status(204).send({ message: 'Blog deleted successfully' });
+    res.status(204).json({ message: 'Blog deleted successfully' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
