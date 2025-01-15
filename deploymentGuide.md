@@ -62,7 +62,7 @@ JWT_SECRET=your_jwt_secret
 #Build the Docker images for the services:
 docker-compose build
 #NOTE: If the env file is not been passed automatically to the containers while building then specify explicitly the env file in the build command
-docker-compose  build
+docker-compose --env-file .env build
 #Start all containers in detached mode using:
 docker-compose up -d
 #This command will:
