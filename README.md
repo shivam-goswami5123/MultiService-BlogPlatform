@@ -1,9 +1,9 @@
 # **Multi-Service Blog Platform**
 
 
-## **Project Assignment**
+## **Project Details**
 
-For detailed information about the project assignment (Coding Blocks SDE Intern), please refer to the [Google Doc Assignment](https://docs.google.com/document/d/1lLiBLcsQXYmlod_NXPPsKzc1r2Kf4oNedYdVj2BkdEM).
+For detailed information about the project, please refer to the [Google Doc Assignment](https://docs.google.com/document/d/1lLiBLcsQXYmlod_NXPPsKzc1r2Kf4oNedYdVj2BkdEM).
 
 
 
